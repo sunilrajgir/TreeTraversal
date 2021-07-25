@@ -175,4 +175,34 @@ class Tree {
 }
 
 
+ var dict = [Int:[Int]]()
+    func printVerticalOrder(root:Node?, index:Int){
+        if root != nil {
+            printVerticalOrder(root: root!.left, index: index-1)
+            if dict[index] != nil {
+                var temp = dict[index]!
+                temp.append(root!.val)
+                dict[index] = temp
+            } else {
+                dict[index] = [root!.val]
+            }
+            printVerticalOrder(root: root!.right, index: index+1)
+        }
+    }
+
+    func printVertical45Degree(root:Node?,index:Int){
+        if root != nil {
+            printVertical45Degree(root: root!.left, index: index)
+            if dict[index] != nil {
+                var temp = dict[index]!
+                temp.append(root!.val)
+                dict[index] = temp
+            } else {
+                dict[index] = [root!.val]
+            }
+            printVertical45Degree(root: root!.right, index: index+1)
+        }
+    }
+
+
 
